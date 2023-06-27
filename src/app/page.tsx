@@ -46,8 +46,11 @@ const schema = z.object({
   const { day, month, year } = date;
   if (!day && !month && !year) return true;
 
-  const lastDayOfMonth = new Date(year, month, 0).getDate();
-  return day <= lastDayOfMonth;
+  if (day !== null && month !== null && year !== null) {
+    const lastDayOfMonth = new Date(year, month, 0).getDate();
+    return day <= lastDayOfMonth;
+  }
+
 }, {
   message: "Must be a valid day of the month"
 });
@@ -113,7 +116,7 @@ export default function Home() {
               />
               {errors.day && (
                 <span className="text-red-500 font-normal text-2xs italic">
-                  {errors.day.message}
+                  {typeof errors.day === 'string' ? errors.day : null}
                 </span>
               )}
             </div>
@@ -135,7 +138,7 @@ export default function Home() {
 
               {errors.month && (
                 <span className="text-red-500 font-normal text-2xs italic">
-                  {errors.month.message}
+                  {typeof errors.month === 'string' ? errors.month : null}
                 </span>
               )}
             </div>
@@ -156,7 +159,7 @@ export default function Home() {
               />
               {errors.year && (
                 <span className="text-red-500 font-normal text-2xs italic">
-                  {errors.year.message}
+                  {typeof errors.year === 'string' ? errors.year : null}
                 </span>
               )}
             </div>
