@@ -93,74 +93,96 @@ export default function Home() {
   })
 
   return (
-    <main className="h-screen w-screen bg-off-white text-black flex justify-center items-center">
-      <div className="bg-white rounded-xl rounded-br-4xl p-12 flex flex-col gap-4 justify-center items-start">
-        <form
-          onSubmit={handleSubmit(submitDate)}>
-          <div className="flex text-smokey-grey font-bold gap-4 text-xl">
-            <div className="flex flex-col gap-2 w-24">
-              <label htmlFor="day" className="text-xs tracking-widest">DAY</label>
+    <main className="h-screen w-full bg-off-white text-black flex justify-center items-center">
+      <div className="bg-white rounded-xl rounded-br-4xl p-12 flex flex-col gap-4 justify-center items-start w-full max-w-lg mx-4 sm:w-auto sm:mx-auto">
+        <form onSubmit={handleSubmit(submitDate)} className="w-full">
+          <div className="flex text-smokey-grey font-bold gap-4 text-xl md:mr-14">
+            <div className="flex flex-col gap-2 md:w-[100px] w-1/3">
+              <label htmlFor="day" className="text-xs tracking-widest">
+                DAY
+              </label>
               <input
                 id="day"
-                {...register('day', { valueAsNumber: true })}
+                {...register("day", { valueAsNumber: true })}
                 type="number"
                 placeholder="DD"
-                className="border border-light-grey rounded p-2 w-24 
-              focus:outline-none focus:border-purple 
-              invalid:border-red-500 invalid:text-red-600
-              focus:invalid:border-red-500 focus:invalid:ring-red-500"
+                className="border border-light-grey rounded p-2 w-full 
+                focus:outline-none focus:border-purple 
+                invalid:border-red-500 invalid:text-red-600
+                focus:invalid:border-red-500 focus:invalid:ring-red-500"
               />
-              {errors.day && <span className='text-red-500 font-normal text-2xs italic'>{errors.day.message}</span>}
+              {errors.day && (
+                <span className="text-red-500 font-normal text-2xs italic">
+                  {errors.day.message}
+                </span>
+              )}
             </div>
 
-            <div className="flex flex-col gap-2 w-24">
-              <label htmlFor="month" className="text-xs tracking-widest">MONTH</label>
+            <div className="flex flex-col gap-2 md:w-[100px] w-1/3">
+              <label htmlFor="month" className="text-xs tracking-widest">
+                MONTH
+              </label>
               <input
                 id="month"
-                {...register('month', { valueAsNumber: true })}
+                {...register("month", { valueAsNumber: true })}
                 type="number"
                 placeholder="MM"
                 className="border border-light-grey rounded p-2 
-              focus:outline-none focus:border-purple 
-              invalid:border-red-500 invalid:text-red-600
-              focus:invalid:border-red-500 focus:invalid:ring-red-500"
+                focus:outline-none focus:border-purple 
+                invalid:border-red-500 invalid:text-red-600
+                focus:invalid:border-red-500 focus:invalid:ring-red-500"
               />
-              
-              {errors.month && <span className='text-red-500 font-normal text-2xs italic'>{errors.month.message}</span>}
+
+              {errors.month && (
+                <span className="text-red-500 font-normal text-2xs italic">
+                  {errors.month.message}
+                </span>
+              )}
             </div>
 
-            <div className="flex flex-col gap-2 max-w-fit w-24">
-              <label htmlFor="year" className="text-xs tracking-widest">YEAR</label>
+            <div className="flex flex-col gap-2 md:w-[100px] w-1/3">
+              <label htmlFor="year" className="text-xs tracking-widest">
+                YEAR
+              </label>
               <input
                 id="year"
-                {...register('year', { valueAsNumber: true })}
+                {...register("year", { valueAsNumber: true })}
                 type="number"
                 placeholder="YYYY"
                 className="border border-light-grey rounded p-2 
-              focus:outline-none focus:border-purple 
-              invalid:border-red-500 invalid:text-red-600
-              focus:invalid:border-red-500 focus:invalid:ring-red-500"
+                focus:outline-none focus:border-purple 
+                invalid:border-red-500 invalid:text-red-600
+                focus:invalid:border-red-500 focus:invalid:ring-red-500"
               />
-              {errors.year && <span className='text-red-500 font-normal text-2xs italic'>{errors.year.message}</span>}
+              {errors.year && (
+                <span className="text-red-500 font-normal text-2xs italic">
+                  {errors.year.message}
+                </span>
+              )}
             </div>
           </div>
 
-
-          <div className="flex w-96">
+          <div className="flex w-full md:mt-0 mt-2">
             <hr className="my-6 w-full border-b-light-grey"></hr>
             <button className="w-14 p-3 aspect-square bg-purple rounded-full hover:bg-off-black transition-all">
               <Image src={IconButton} className="" alt="icon-arrow" />
             </button>
           </div>
-
         </form>
 
-        <div className="flex flex-col font-bold italic text-6xl">
-          <h1><span className="text-purple">{elapsed.years ? elapsed.years : "--"}</span> years</h1>
-          <h1><span className="text-purple">{elapsed.months ? elapsed.months : "--"}</span> months</h1>
-          <h1><span className="text-purple">{elapsed.days ? elapsed.days : "--"}</span> days</h1>
+        <div className="flex flex-col font-bold italic text-5xl md:text-6xl">
+          <h1>
+            <span className="text-purple">{elapsed.years ? elapsed.years : "--"}</span> years
+          </h1>
+          <h1>
+            <span className="text-purple">{elapsed.months ? elapsed.months : "--"}</span> months
+          </h1>
+          <h1>
+            <span className="text-purple">{elapsed.days ? elapsed.days : "--"}</span> days
+          </h1>
         </div>
       </div>
     </main>
-  )
+  );
+
 }
